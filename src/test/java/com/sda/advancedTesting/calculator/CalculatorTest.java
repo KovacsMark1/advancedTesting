@@ -6,11 +6,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(MockitoExtension.class)
 public class CalculatorTest {
+
 
     @Test
     void verifyAdd() {
@@ -114,5 +115,23 @@ public class CalculatorTest {
                 );
 
     }
+
+    @Test
+    void divideIllegalArgumentException() {
+
+        //Given
+        double a = 10;
+        double b = 0;
+        Calculator calculator = new Calculator();
+
+        //When Then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(
+                        () -> calculator.divide(a, b)
+                )
+                .withMessage("Division by 0 is not supported!");
+    }
+// To do :
+    // @TEST la modulo!!
 
 }
