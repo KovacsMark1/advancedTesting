@@ -13,7 +13,7 @@ public class Calculator {
     }
 
     public double multiply(double a, double b) {
-        if (a < Double.MAX_VALUE / b) {
+        if (a > Double.MAX_VALUE / b) {
             throw new TruncatedResultException ("Cannot multiply numbers of this size. Result will be truncated. ");
         }
         return a * b;
